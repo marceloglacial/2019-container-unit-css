@@ -80,37 +80,37 @@ p {
 }
 
 // Layout
-
-.header {
-    width: column-spans(12); 
-    background: yellow;
-}
-.content {
-    width: column-spans(4); 
-    background: yellowgreen;
-}
-.sidebar {
-    width: column-spans(8); 
-    background: greenyellow;
-}
-.footer {
-    width: column-spans(12); 
-    background: fuchsia;
-}
-
 .grid {
     background: black;
     width: var(--container-width);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin: auto;
+
     >* {
+        height: gutters(6);
+        font-size: calc(50% + 1vw);
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-        height: gutters(6);
-        font-size: calc(50% + 1vw); 
     }
+}
+.header {
+    width: column-spans(12);
+    background: yellow;
+}
+
+.content {
+    width: column-spans(4);
+    background: yellowgreen;
+}
+
+.sidebar {
+    width: column-spans(8);
+    background: greenyellow;
+}
+
+.footer {
+    width: column-spans(12);
+    background: fuchsia;
 }
