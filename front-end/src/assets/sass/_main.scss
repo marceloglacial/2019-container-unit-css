@@ -1,9 +1,3 @@
-// Title: Snowfall Boilerplate
-// Author: Marcelo Glacial
-// Author URL: http: //marceloglacial.com
-// Starts on: 05/2017
-
-
 // Global  
 // =======================================================
 
@@ -27,7 +21,7 @@ p {
     color: $secondary-color;
 }
 
-// Grid
+// Container Units CSS
 // =======================================================
 
 :root {
@@ -64,19 +58,7 @@ p {
     }
 }
 
-.grid {
-    width: var(--container-width);
-    display: grid;
-    grid-template-columns: repeat(var(--grid-columns), var(--column-unit));
-    grid-column-gap: var(--gutter-unit);
-    margin: auto;
-
-    div {
-        height: 80vh;
-        background: #6f2a80;
-    }
-}
-
+// Functions 
 @function columns($i) {
     @return calc(#{$i} * var(--column-unit));
 }
@@ -95,4 +77,40 @@ p {
 
 @function mix-units($columns, $gutters: $columns) {
     @return calc((#{$columns} * var(--column-unit)) + (#{$gutters} * var(--gutter-unit)));
+}
+
+// Layout
+
+.header {
+    width: column-spans(12); 
+    background: yellow;
+}
+.content {
+    width: column-spans(4); 
+    background: yellowgreen;
+}
+.sidebar {
+    width: column-spans(8); 
+    background: greenyellow;
+}
+.footer {
+    width: column-spans(12); 
+    background: fuchsia;
+}
+
+.grid {
+    background: black;
+    width: var(--container-width);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    >* {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: gutters(6);
+        font-size: calc(50% + 1vw); 
+    }
 }
